@@ -1,3 +1,7 @@
+#Ai Mei Zhang
+#Cole Adam Reilly
+#Updated for 2026
+
 from io import StringIO
 from html.parser import HTMLParser
 from pathlib import Path
@@ -85,7 +89,7 @@ coor_d = {}
 
 #load the main form sheet from the dict x, and replace all empty values with an empty string to legalize concat
 #TODO FIND SUMMARY ENTRY WITHOUT YEAR
-summarydf = x['Locus Summary Entry 2025']
+summarydf = x['Locus Summary Entry 2026']
 summarydf = summarydf.fillna('')
 
     #for every locus that has a filled form
@@ -138,7 +142,7 @@ for index, row in summarydf.iterrows():
     output_path_eng = f"./Output/{t_name}/ENG/"
     output_name_eng = f"SU Locus {row["Locus ID"]} Form.docx"
     
-    output_path_eng_sm = f"./Output/{t_name}/ENG_SM/"
+    output_path_eng_sm = f"./Output/{t_name}/ENG/ENG_SM/"
     output_name_eng_sm = f"SU Locus {row["Locus ID"]} Form.docx"
 
     #if the shortened name isn't in the coordinate dictionary, add it will stripping out useless stuff
@@ -399,7 +403,7 @@ for index, row in summarydf.iterrows():
                         samples += ', '
                     samples += str(r['Contains Samples'])
     except KeyError as e:
-        print(p, 10, "Key error")
+        print(e, 10, "Key error")
         print("No Samples Taken?")
     finally:
         if samples == '':
